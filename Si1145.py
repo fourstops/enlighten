@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding:UTF-8 -*-
 
 import smbus
@@ -137,7 +137,7 @@ def Si1145_Init():
 
     id = Si1145_read8(SI1145_REG_PARTID)
     if(id != 0x45):
-        print "Si1145 ID error ! Now you read is: ", id
+        #print "Si1145 ID error ! Now you read is: ", id
         while(1):
             time.sleep(1)
 
@@ -193,7 +193,7 @@ def Si1145_Init():
     # auto run
     Si1145_write8(SI1145_REG_COMMAND, SI1145_PSALS_AUTO);
 
-    print "Si145 Init success !"
+#    print "Si145 Init success !"
 
 
 

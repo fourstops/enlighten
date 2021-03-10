@@ -1,22 +1,15 @@
-# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
-# SPDX-License-Identifier: MIT
+#!/usr/bin/env python
 
-# VEML6070 Driver Example Code
+import veml6070
 
-import time
-import busio
-import board
-from VEML6070 import VEML6070
+ALL_INTEGRATION_TIMES = [
+    veml6070.INTEGRATIONTIME_1_2T, veml6070.INTEGRATIONTIME_1T, veml6070.INTEGRATIONTIME_2T, veml6070.INTEGRATIONTIME_4T
+]
 
-with busio.I2C(board.SCL, board.SDA) as i2c:
-    uv = VEML6070(i2c)
-    # Alternative constructors with parameters
-    # uv = adafruit_veml6070.VEML6070(i2c, 'VEML6070_1_T')
-    # uv = adafruit_veml6070.VEML6070(i2c, 'VEML6070_HALF_T', True)
-
-    # take 10 readings
-    for j in range(10):
-        uv_raw = uv.uv_raw
-        risk_level = uv.get_index(uv_raw)
-        print("Reading: {0} | Risk Level: {1}".format(uv_raw, risk_level))
-        time.sleep(1)
+if __name__ == '__main__':
+    veml = veml6070.Veml6070()
+    for i in ALL_INTEGRATION_TIMES:
+        veml.set_integration_time(i)
+        uv_raw = veml.get_uva_light_intensity_raw()
+        uv = veml.get_uva_light_intensity()
+        print("Integration Time setting %d: %f W/(m*m) from raw value %d" % (i, uv, uv_raw))

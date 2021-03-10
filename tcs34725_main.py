@@ -6,7 +6,7 @@ from TCS34725 import TCS34725
 
 try:
     Light=TCS34725(0X29, debug=False)
-    if(Light.TCS34725_init() == 1):
+    if(Light.TCS34725_init() == 0):
         print("TCS34725 initialization error!!")
     else:
         print("TCS34725 initialization success!!")
@@ -28,5 +28,5 @@ try:
         time.sleep(2)
 except:
     GPIO.cleanup()
-    print "\nProgram end"
+    print ("\nProgram end")
     exit()
