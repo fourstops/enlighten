@@ -22,11 +22,12 @@ try:
         UVindex = Sensor.Si1145_readUV()
         UVindex /= 100.0
         print "UV: ", UVindex
-
+ 
         Light.Get_RGBData()
         Light.GetRGB888()
         Light.GetRGB565()
-        print("R: %d "%Light.RGB888_R), 
+        print "R: ", Light.RGB888_R
+        print("R: %d "%Light.RGB888_R ), 
         print("G: %d "%Light.RGB888_G), 
         print("B: %d "%Light.RGB888_B), 
         print("C: %#x "%Light.C),

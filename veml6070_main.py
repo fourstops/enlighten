@@ -9,7 +9,7 @@ import board
 from VEML6070 import VEML6070
 
 with busio.I2C(board.SCL, board.SDA) as i2c:
-    uv = adafruit_veml6070.VEML6070(i2c)
+    uv = VEML6070(i2c)
     # Alternative constructors with parameters
     # uv = adafruit_veml6070.VEML6070(i2c, 'VEML6070_1_T')
     # uv = adafruit_veml6070.VEML6070(i2c, 'VEML6070_HALF_T', True)
