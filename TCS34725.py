@@ -197,7 +197,7 @@ class TCS34725:
         self.IntegrationTime_t = self.TCS34725_INTEGRATIONTIME_154MS
         self.Gain_t = self.TCS34725_GAIN_60X
         self.Enable()
-        self.Interrupt_Enable()
+        self.Interrupt_Disable()
         self.SetLight(40)
         return 0
 
